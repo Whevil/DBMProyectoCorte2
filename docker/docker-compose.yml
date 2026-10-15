@@ -1,58 +1,73 @@
-services:
-  core:
-    build:
-      context: ..
-      dockerfile: docker/Dockerfile
-    container_name: core_container
-    ports:
-      - "8080:8080"
-    volumes:
-      - ../data:/app/data
-    depends_on:
-      - mongo_personas
-      - mongo_articulos
-      - mongo_ventas
-      - relacional
+name: bdm
 
+services:
   mongo_personas:
-    image: mongo:6.0
+    image: mongo:7
     container_name: mongo_personas
+    ports:
+      - "27017:27017"
+    volumes:
+      - data_personas:/data/db
+    networks: [bdm_net]
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  mongo_articulos:
+    image: mongo:7
+    container_name: mongo_articulos
     ports:
       - "27018:27017"
     volumes:
-      - mongo_personas_data:/data/db
+      - data_articulos:/data/db
+    networks: [bdm_net]
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
-  mongo_articulos:
-    image: mongo:6.0
-    container_name: mongo_articulos
+  mongo_ventas:
+    image: mongo:7
+    container_name: mongo_ventas
     ports:
       - "27019:27017"
     volumes:
-      - mongo_articulos_data:/data/db
-
-  mongo_ventas:
-    image: mongo:6.0
-    container_name: mongo_ventas
-    ports:
-      - "27020:27017"
-    volumes:
-      - mongo_ventas_data:/data/db
+      - data_ventas:/data/db
+    networks: [bdm_net]
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   relacional:
-    image: mariadb:11.4
+    image: postgres:16
     container_name: relacional
     environment:
-      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:-mariadb}
-      MARIADB_DATABASE: almacen
-      MARIADB_USER: app_user
-      MARIADB_PASSWORD: ${MARIADB_PASSWORD:-mariadb}
+      POSTGRES_USER: bdm
+      POSTGRES_PASSWORD: bdm_pass
+      POSTGRES_DB: almacen
     ports:
-      - "3308:3306"
+      - "5432:5432"
     volumes:
-      - mariadb_data:/var/lib/mysql
+      - data_relacional:/var/lib/postgresql/data
+    networks: [bdm_net]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bdm -d almacen"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  bdm_net:
+    name: bdm_net
+    driver: bridge
 
 volumes:
-  mongo_personas_data:
-  mongo_articulos_data:
-  mongo_ventas_data:
-  mariadb_data:
+  data_personas:
+  data_articulos:
+  data_ventas:
+  data_relacional:
