@@ -1,0 +1,210 @@
+{
+  "PERSONAS": {
+    "registros": 10000,
+    "campos": {
+      "direccion": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      },
+      "email": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      },
+      "fechaNacimiento": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      },
+      "nombres": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      },
+      "numeroDocumento": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      },
+      "primerApellido": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      },
+      "segundoApellido": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      },
+      "telefono": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      }
+    },
+    "clasificacion": {
+      "numeroDocumento": {
+        "texto_con_simbolos": 4978,
+        "texto_numerico": 5014,
+        "texto_sin_digitos": 8
+      },
+      "telefono": {
+        "texto_numerico": 5031,
+        "texto_con_simbolos": 4961,
+        "texto_sin_digitos": 8
+      }
+    },
+    "duplicados": {
+      "numeroDocumento": {
+        "claves_repetidas": 0,
+        "registros_afectados": 0
+      },
+      "registros_completos_duplicados": 0
+    }
+  },
+  "ARTICULOS": {
+    "registros": 10000,
+    "campos": {
+      "cantidadArticulo": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      },
+      "idArticulo": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      },
+      "nombreArticulo": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      },
+      "precioArticulo": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "float": 10000
+        }
+      }
+    },
+    "clasificacion": {
+      "idArticulo": {
+        "texto_numerico": 5241,
+        "texto_con_simbolos": 4759
+      },
+      "cantidadArticulo": {
+        "texto_numerico": 5297,
+        "texto_con_simbolos": 4703
+      }
+    },
+    "duplicados": {
+      "idArticulo": {
+        "claves_repetidas": 978,
+        "registros_afectados": 4965
+      },
+      "registros_completos_duplicados": 0
+    }
+  },
+  "VENTAS": {
+    "registros": 10000,
+    "campos": {
+      "cantidadProductos": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      },
+      "idArticulo": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "int": 10000
+        }
+      },
+      "idComprador": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "str": 10000
+        }
+      },
+      "idVenta": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "int": 10000
+        }
+      },
+      "precioTotal": {
+        "presentes": 10000,
+        "faltantes": 0,
+        "nulos_vacios": 0,
+        "tipos": {
+          "float": 10000
+        }
+      }
+    },
+    "clasificacion": {
+      "idComprador": {
+        "texto_con_simbolos": 5029,
+        "texto_numerico": 4961,
+        "texto_sin_digitos": 10
+      },
+      "idArticulo": {
+        "numerico_ok": 10000
+      },
+      "cantidadProductos": {
+        "texto_con_simbolos": 4969,
+        "texto_numerico": 5031
+      },
+      "precioTotal": {
+        "decimal": 9908,
+        "numerico_ok": 92
+      }
+    },
+    "duplicados": {
+      "registros_completos_duplicados": 0
+    }
+  }
+}
