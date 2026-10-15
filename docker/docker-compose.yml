@@ -61,6 +61,17 @@ services:
       timeout: 5s
       retries: 5
 
+  mojo:
+    build:
+      context: .
+      dockerfile: Dockerfile.mojo
+    container_name: mojo
+    command: tail -f /dev/null
+    working_dir: /workspace
+    volumes:
+      - ../mojo:/workspace/mojo
+    networks: [bdm_net]
+
 networks:
   bdm_net:
     name: bdm_net
